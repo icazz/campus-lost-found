@@ -1,0 +1,21 @@
+# Dependency (Paling Penting)
+node_modules/
+
+# Environment Variables (RAHASIA!)
+.env
+
+# Build Output (Hasil compile frontend)
+dist/
+build/
+
+# Folder Uploads (Gambar user jangan dipush)
+backend/uploads/
+
+# File Sistem Operasi (Sampah)
+.DS_Store
+Thumbs.db
+
+# Log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
