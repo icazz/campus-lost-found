@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const itemSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true // Nama barang wajib diisi
+    required: true
   },
   description: {
     type: String,
@@ -11,20 +11,20 @@ const itemSchema = new mongoose.Schema({
   },
   location: {
     type: String,
-    required: true // Lokasi ditemukan wajib diisi
+    required: true 
   },
   imageUrl: {
-    type: String, // Kita simpan nama filenya saja nanti
+    type: String, 
     required: true
   },
   founder: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', // Ini menghubungkan barang dengan User yang memposting
+    ref: 'User',
     required: true
   },
   status: {
     type: String,
-    enum: ['Lost', 'Claimed'], // Status cuma boleh 'Lost' atau 'Claimed'
+    enum: ['Lost', 'Claimed'],
     default: 'Lost'
   }
 }, { timestamps: true });

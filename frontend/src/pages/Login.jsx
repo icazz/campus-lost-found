@@ -40,53 +40,57 @@ const Login = () => {
           <p>Masuk ke akun Anda</p>
         </div>
 
-        {/* Error Alert */}
         {error && (
-          <div style={{ padding: '10px', backgroundColor: '#4b0000', border: '1px solid #ff0000', borderRadius: '6px', marginBottom: '16px', color: '#ffaaaa', fontSize: '14px' }}>
+          <div style={{ padding: '10px', backgroundColor: '#fdd', border: '1px solid #f99', borderRadius: '6px', marginBottom: '16px', color: '#dc2626', fontSize: '14px' }}>
             {error}
           </div>
         )}
 
         <form onSubmit={handleSubmit}>
           
-          <label htmlFor="username" style={{ display: 'block', marginBottom: '4px', fontSize: '14px' }}>
-            Username
-          </label>
-          <input
-            id="username"
-            name="username"
-            type="text"
-            placeholder="Masukkan username"
-            value={formData.username}
-            onChange={handleChange}
-            className="form-input"
-            required
-          />
+          <div className="form-group-item">
+            <label htmlFor="username" className="form-input-label">
+              Username
+            </label>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              placeholder="Masukkan username"
+              value={formData.username}
+              onChange={handleChange}
+              className="form-input"
+              required
+            />
+          </div>
 
-          <label htmlFor="password" style={{ display: 'block', marginBottom: '4px', fontSize: '14px' }}>
-            Password
-          </label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Masukkan password"
-            value={formData.password}
-            onChange={handleChange}
-            className="form-input"
-            required
-          />
+          <div className="form-group-item">
+            <label htmlFor="password" className="form-input-label">
+              Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Masukkan password"
+              value={formData.password}
+              onChange={handleChange}
+              className="form-input"
+              required
+            />
+          </div>
 
           <button 
             type="submit" 
             className="form-button"
+            style={{ marginTop: '30px' }}
             disabled={loading}
           >
             {loading ? 'Masuk...' : 'Login'}
           </button>
         </form>
 
-        <div style={{ marginTop: '16px', textAlign: 'center', fontSize: '14px' }}>
+        <div className="footer-text" style={{ textAlign: 'center', marginTop: '16px' }}>
           Belum punya akun?{' '}
           <Link to="/register" className="form-link">
             Daftar di sini

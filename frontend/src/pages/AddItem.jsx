@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import API from '../api';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
 const AddItem = () => {
@@ -50,44 +50,55 @@ const AddItem = () => {
   };
 
   return (
-    <>
+    <div className="navbar-layout">
       <Navbar />
-      <div className="page-container" style={{ alignItems: 'flex-start', paddingTop: '3rem' }}>
+      <div className="dashboard-content" style={{ paddingTop: '3rem', display: 'flex', justifyContent: 'center' }}>
         
-        <div className="form-card" style={{ maxWidth: '700px', backgroundColor: 'var(--color-bg-dark)' }}> {/* Form lebih lebar */}
+        <div className="add-item-card">
           
-          <div className="form-header" style={{ marginBottom: '1.5rem' }}>
+          <div className="add-item-header">
             <h1>Lapor Barang Temuan</h1>
-            <p>Isi detail barang yang Anda temukan untuk memudahkan pemilik melacaknya.</p>
+            <p>Isi form berikut untuk melaporkan barang yang Anda temukan</p>
           </div>
 
           <form onSubmit={handleSubmit}>
             
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
-                <div>
-                    <label style={{ display: 'block', marginBottom: '4px', fontSize: '14px' }}>Nama Barang</label>
-                    <input type="text" placeholder="Contoh: Dompet Kulit Coklat" className="form-input" 
-                        onChange={(e) => setName(e.target.value)} required />
-                </div>
-                <div>
-                    <label style={{ display: 'block', marginBottom: '4px', fontSize: '14px' }}>Lokasi Ditemukan</label>
-                    <input type="text" placeholder="Contoh: Kantin Teknik" className="form-input" 
-                        onChange={(e) => setLocation(e.target.value)} required />
-                </div>
+            <div style={{ marginBottom: '25px' }}>
+                <label className="form-input-label">Nama Barang</label>
+                <input 
+                  type="text" 
+                  placeholder="Contoh: Kunci Motor, Dompet Merah, dll" 
+                  className="form-input" 
+                  onChange={(e) => setName(e.target.value)} 
+                  required 
+                />
             </div>
             
-            <label style={{ display: 'block', marginBottom: '4px', fontSize: '14px' }}>Deskripsi & Ciri-ciri</label>
-            <textarea 
-                rows="3"
-                placeholder="Jelaskan kondisi barang, warna, isi, atau ciri khusus lainnya..." 
-                className="form-input"
-                style={{ resize: 'none' }}
-                onChange={(e) => setDescription(e.target.value)} required
-            ></textarea>
+            <div style={{ marginBottom: '25px' }}>
+                <label className="form-input-label">Lokasi Ditemukan</label>
+                <input 
+                  type="text" 
+                  placeholder="Contoh: Perpustakaan, Parkiran, Kantin, dll" 
+                  className="form-input" 
+                  onChange={(e) => setLocation(e.target.value)} 
+                  required 
+                />
+            </div>
             
-            {/* Custom File Upload Area */}
-            <label style={{ display: 'block', marginBottom: '4px', fontSize: '14px' }}>Foto Barang</label>
-            <div className="upload-area">
+            <div style={{ marginBottom: '25px' }}>
+                <label className="form-input-label">Deskripsi</label>
+                <textarea 
+                    rows="4"
+                    placeholder="Deskripsikan ciri-ciri barang secara detail" 
+                    className="form-input"
+                    style={{ resize: 'none', height: '120px' }}
+                    onChange={(e) => setDescription(e.target.value)} 
+                    required
+                ></textarea>
+            </div>
+
+            <label className="form-input-label">Foto Barang</label>
+            <div className="upload-box" onClick={() => document.getElementById('file-upload').click()}>
                 <input 
                     type="file" 
                     id="file-upload" 
@@ -97,33 +108,36 @@ const AddItem = () => {
                     required={!preview}
                 />
                 
-                <label htmlFor="file-upload" style={{ display: 'block', padding: '16px', cursor: 'pointer' }}>
-                    {preview ? (
-                        <div style={{ position: 'relative' }}>
-                            <img src={preview} alt="Preview" className="upload-area-preview" />
-                            <p style={{ color: '#888' }}>Klik untuk Ganti Foto</p>
-                        </div>
-                    ) : (
-                        <div>
-                            <p style={{ fontSize: '16px', marginBottom: '4px' }}><span className="upload-label-text">Klik untuk upload</span> atau drag foto kesini</p>
-                            <p style={{ fontSize: '12px', color: '#888' }}>SVG, PNG, JPG (MAX. 5MB)</p>
-                        </div>
-                    )}
-                </label>
+                {preview ? (
+                    <div style={{ position: 'relative' }}>
+                        <img src={preview} alt="Preview" className="upload-preview" />
+                        <p style={{ color: 'var(--color-primary)', fontSize: '0.9rem' }}>Klik untuk Ganti Foto</p>
+                    </div>
+                ) : (
+                    <div>
+                        <div className="upload-icon">📷</div>
+                        <p style={{ color: 'var(--color-text-primary)', fontWeight: 'bold' }}>Pilih foto barang</p>
+                        <p style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)' }}>PNG, JPG hingga 5MB</p>
+                    </div>
+                )}
             </div>
 
-            <button 
-                type="submit" 
-                className="form-button"
-                style={{ marginTop: '24px' }}
-                disabled={isLoading}
-            >
-                {isLoading ? 'Sedang Mengirim...' : 'Kirim Laporan Sekarang'}
-            </button>
+            <div className="form-actions">
+                <Link to="/dashboard" className="btn-batal">
+                    Batal
+                </Link>
+                <button 
+                    type="submit" 
+                    className="btn-kirim"
+                    disabled={isLoading}
+                >
+                    {isLoading ? 'Mengirim...' : 'Kirim Laporan'}
+                </button>
+            </div>
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

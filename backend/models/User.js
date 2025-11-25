@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    unique: true // Username tidak boleh sama
+    unique: true
   },
   password: {
     type: String,
@@ -14,6 +14,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   }
-}, { timestamps: true }); // Otomatis buat kolom created_at dan updated_at
+}, { timestamps: true });
 
 module.exports = mongoose.model('User', userSchema);

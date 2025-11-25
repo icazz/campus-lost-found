@@ -32,74 +32,80 @@ const Register = () => {
   return (
     <div className="page-container">
       
-      <div className="form-card" style={{ maxWidth: '500px' }}> {/* Card sedikit lebih lebar untuk 3 input */}
+      <div className="form-card" style={{ maxWidth: '500px' }}> 
         
         <div className="form-header">
-          <h1>Daftar Akun Baru</h1>
-          <p>Buat akun Anda untuk mulai melaporkan</p>
+          <h1>Campus Lost & Found</h1>
+          <p>Daftar akun baru</p>
         </div>
 
-        {/* Error Alert */}
         {error && (
-          <div style={{ padding: '10px', backgroundColor: '#4b0000', border: '1px solid #ff0000', borderRadius: '6px', marginBottom: '16px', color: '#ffaaaa', fontSize: '14px' }}>
+          <div style={{ padding: '10px', backgroundColor: 'var(--color-error-bg)', border: '1px solid var(--color-destructive)', borderRadius: '6px', marginBottom: '16px', color: 'var(--color-error-text)', fontSize: '14px' }}>
             {error}
           </div>
         )}
 
         <form onSubmit={handleSubmit}>
           
-          <label htmlFor="name" style={{ display: 'block', marginBottom: '4px', fontSize: '14px' }}>
-            Nama Lengkap
-          </label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            placeholder="Masukkan nama lengkap"
-            value={formData.name}
-            onChange={handleChange}
-            className="form-input"
-            required
-          />
+          <div className="form-group-item">
+            <label htmlFor="name" className="form-input-label">
+              Nama Lengkap
+            </label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Masukkan nama lengkap"
+              value={formData.name}
+              onChange={handleChange}
+              className="form-input"
+              required
+            />
+          </div>
+          
+          <div className="form-group-item">
+            <label htmlFor="username" className="form-input-label">
+              Username
+            </label>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              placeholder="Pilih username"
+              value={formData.username}
+              onChange={handleChange}
+              className="form-input"
+              required
+            />
+          </div>
 
-          <label htmlFor="username" style={{ display: 'block', marginBottom: '4px', fontSize: '14px' }}>
-            Username
-          </label>
-          <input
-            id="username"
-            name="username"
-            type="text"
-            placeholder="Pilih username"
-            value={formData.username}
-            onChange={handleChange}
-            className="form-input"
-            required
-          />
-
-          <label htmlFor="password" style={{ display: 'block', marginBottom: '4px', fontSize: '14px' }}>
-            Password
-          </label>
-          <input
-            id="password"
-            name="password"
-            type="password"
-            placeholder="Buat password"
-            value={formData.password}
-            onChange={handleChange}
-            className="form-input"
-            required
-          />
+          <div className="form-group-item">
+            <label htmlFor="password" className="form-input-label">
+              Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Buat password"
+              value={formData.password}
+              onChange={handleChange}
+              className="form-input"
+              required
+            />
+          </div>
 
           <button 
             type="submit" 
             className="form-button"
+            style={{ marginTop: '30px' }}
             disabled={loading}
           >
             {loading ? 'Mendaftar...' : 'Daftar Akun'}
           </button>
         </form>
 
-        <div style={{ marginTop: '16px', textAlign: 'center', fontSize: '14px' }}>
+        <div className="auth-footer" style={{ marginTop: '16px', textAlign: 'center', fontSize: '14px' }}>
           Sudah punya akun?{' '}
           <Link to="/login" className="form-link">
             Login di sini
