@@ -61,10 +61,11 @@ Masalah umum di lingkungan kampus adalah hilangnya barang berharga, di mana info
 
 | Halaman | Deskripsi | Screenshot |
 | :--- | :--- | :--- |
-| **Login / Register** | Tampilan *Card* terpusat untuk autentikasi. | ![login](assets/login.png) |
-| **Dashboard Utama** | Tampilan *grid* semua barang temuan, lengkap dengan *Search Bar* dan *Filter Tabs*. | [PLACEHOLDER: Screenshot Dashboard dengan 2-3 item] |
-| **Item Card Detail** | Tampilan detail kartu barang yang menampilkan gambar, lokasi (📍), dan tombol Hapus (jika milik sendiri). | [PLACEHOLDER: Screenshot Detail Kartu Barang] |
-| **Lapor Barang** | Tampilan form untuk mengunggah detail barang dan foto. | [PLACEHOLDER: Screenshot Halaman Add Item] |
+| **Login / Register** | Tampilan *Card* terpusat untuk autentikasi. | ![register](assets/register.png)![login](assets/login.png) |
+| **Dashboard Utama** | Tampilan *grid* semua barang temuan, lengkap dengan *Search Bar* dan *Filter Tabs*. | ![dashboard](assets/dashboard.png) |
+| **Item Card Detail** | Tampilan detail kartu barang yang menampilkan gambar, lokasi (📍), dan tombol Hapus (jika milik sendiri). | ![detail](assets/detail.png) |
+| **Lapor Barang** | Tampilan form untuk mengunggah detail barang dan foto. | ![laporbarang](assets/laporbarang.png) |
+| **Logout** | Validasi menggunakan modal. | ![logout](assets/logout.png) |
 
 -----
 
